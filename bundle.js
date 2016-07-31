@@ -10344,7 +10344,7 @@
 	                debugMode: false,
 	                showNavigator: true,
 	                zoomPerScroll: 1.8,
-	                maxImageCacheCount: 400 // 200 is the default
+	                maxImageCacheCount: 1400 // 200 is the default
 	            });
 	            var overlay = this.viewer.svgOverlay();
 	            // This seems to be a bug in
@@ -11767,8 +11767,8 @@
 	                        for (var i = 0; i < spots_decoded.spots.length; i++) {
 	                            var spot = spots_decoded.spots[i];
 	                            ctx.beginPath();
-	                            var x_circle = (0, _dzi_helper.coord_relative_tile)(x_coord, spot.xCoordPhyscial, tile_size, tile_overlap, level_factor);
-	                            var y_circle = (0, _dzi_helper.coord_relative_tile)(y_coord, spot.yCoordPhyscial, tile_size, tile_overlap, level_factor);
+	                            var x_circle = (0, _dzi_helper.coord_relative_tile)(x_coord, spot.xCoordPhysical, tile_size, tile_overlap, level_factor);
+	                            var y_circle = (0, _dzi_helper.coord_relative_tile)(y_coord, spot.yCoordPhysical, tile_size, tile_overlap, level_factor);
 	                            ctx.arc(x_circle, y_circle, scaled_radius, 0, 2 * Math.PI, false);
 	                            ctx.closePath();
 	                            var col = color_array[i];
