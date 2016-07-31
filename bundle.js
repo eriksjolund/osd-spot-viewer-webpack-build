@@ -10344,7 +10344,7 @@
 	                debugMode: false,
 	                showNavigator: true,
 	                zoomPerScroll: 1.8,
-	                maxImageCacheCount: 1400 // 200 is the default
+	                maxImageCacheCount: 400 // 200 is the default
 	            });
 	            var overlay = this.viewer.svgOverlay();
 	            // This seems to be a bug in
