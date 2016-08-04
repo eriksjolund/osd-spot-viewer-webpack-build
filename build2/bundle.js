@@ -8236,8 +8236,8 @@
 	                      for (var _iterator = (0, _getIterator3.default)(slice_loaders), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
 	                                 var slice_loader = _step.value;
 
-	                                 if (slice_loader.name() in datafiles_container.data_files) {
-	                                            throw Error("The data file name \"" + slice_loader.name() + "\" has already been loaded");
+	                                 if (slice_loader.filename() in datafiles_container.data_files) {
+	                                            throw Error("The data file name \"" + slice_loader.filename() + "\" has already been loaded");
 	                                 }
 	                      }
 	           } catch (err) {
@@ -8292,7 +8292,7 @@
 	                                 for (var _iterator2 = (0, _getIterator3.default)(parsers), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
 	                                            var parser = _step2.value;
 
-	                                            this.layout_renderers[parser.name()] = parser.parser_func();
+	                                            this.layout_renderers[parser.parser_name()] = parser.parser_func();
 	                                 }
 	                      } catch (err) {
 	                                 _didIteratorError2 = true;
@@ -8323,7 +8323,7 @@
 	                                            this.datafiles_container.add_change_listener(function () {
 	                                                       this.update_after_data_change();
 	                                            }.bind(layout_creator));
-	                                            var name = layout_creator.name();
+	                                            var name = layout_creator.layout_creator_name();
 	                                            var id_string = layout_creator.id_string();
 	                                            var nav_tab_entry = '<li><a data-toggle="tab" href="#' + id_string + '">' + name + '</a></li>';
 	                                            $("#create_layouts_nav_tabs").append(nav_tab_entry);
@@ -9422,8 +9422,8 @@
 	    }
 
 	    (0, _createClass3.default)(_class, [{
-	        key: "name",
-	        value: function name() {
+	        key: "filename",
+	        value: function filename() {
 	            return this.file.name;
 	        }
 	    }, {
@@ -10158,7 +10158,6 @@
 	    //
 	    // TODO: Maybe the experiment name should be stored inside the experiment file itself instead?
 	    var filename = url_parser.pathname.substr(url_parser.pathname.lastIndexOf("/") + 1);
-//	    url_parser.remove();
 	    return filename;
 	}
 
@@ -10170,13 +10169,13 @@
 	        (0, _classCallCheck3.default)(this, _class);
 
 	        this.url = url;
-	        this.filename = parse_url_get_filename(url);
+	        this.file_name = parse_url_get_filename(url);
 	    }
 
 	    (0, _createClass3.default)(_class, [{
-	        key: 'name',
-	        value: function name() {
-	            return this.filename;
+	        key: 'filename',
+	        value: function filename() {
+	            return this.file_name;
 	        }
 	    }, {
 	        key: 'get_slice',
@@ -10542,8 +10541,8 @@
 	    }
 
 	    (0, _createClass3.default)(_class, null, [{
-	        key: 'name',
-	        value: function name() {
+	        key: 'parser_name',
+	        value: function parser_name() {
 	            return "fromgene";
 	        }
 	    }, {
@@ -11936,8 +11935,8 @@
 																			}
 
 																			(0, _createClass3.default)(_class, null, [{
-																																					key: 'name',
-																																					value: function name() {
+																																					key: 'parser_name',
+																																					value: function parser_name() {
 																																																							return "fromcolor";
 																																					}
 																			}, {
@@ -12131,8 +12130,8 @@
 				}.bind(this, data_files));
 			}
 		}, {
-			key: 'name',
-			value: function name() {
+			key: 'layout_creator_name',
+			value: function layout_creator_name() {
 				return "random color";
 			}
 		}, {
@@ -12425,8 +12424,8 @@
 	            this.genenames_typeahead_elem.typeahead('val', '');
 	        }
 	    }, {
-	        key: 'name',
-	        value: function name() {
+	        key: 'layout_creator_name',
+	        value: function layout_creator_name() {
 	            return "from gene";
 	        }
 	    }, {
@@ -12648,7 +12647,7 @@
 
 																var experiment_file = new _st_exp_protobuf_file.StExpProtobufFile(slice_loader, this.protobuf_loader);
 																gene_names_promises.push(experiment_file.genenames);
-																this.data_files[slice_loader.name()] = experiment_file;
+																this.data_files[slice_loader.filename()] = experiment_file;
 													}
 										} catch (err) {
 													_didIteratorError3 = true;
