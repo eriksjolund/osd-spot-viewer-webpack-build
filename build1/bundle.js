@@ -10158,7 +10158,7 @@
 	    //
 	    // TODO: Maybe the experiment name should be stored inside the experiment file itself instead?
 	    var filename = url_parser.pathname.substr(url_parser.pathname.lastIndexOf("/") + 1);
-	    url_parser.remove();
+//	    url_parser.remove();
 	    return filename;
 	}
 
