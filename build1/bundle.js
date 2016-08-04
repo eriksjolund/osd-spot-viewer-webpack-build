@@ -11412,10 +11412,6 @@
 
 	  function SlicedImage() {
 	    (0, _classCallCheck3.default)(this, SlicedImage);
-
-	    if (new.target === SlicedImage) {
-	      throw new TypeError("Cannot construct Abstract instances directly");
-	    }
 	  }
 
 	  /**
