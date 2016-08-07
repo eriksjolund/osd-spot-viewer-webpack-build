@@ -12426,7 +12426,7 @@
 	    }, {
 	        key: 'layout_creator_name',
 	        value: function layout_creator_name() {
-	            return "from gene";
+	            return "from gene data";
 	        }
 	    }, {
 	        key: 'id_string',
@@ -12637,6 +12637,7 @@
 							key: "push_sliceloaders",
 							value: function push_sliceloaders(slice_loaders) {
 										var gene_names_promises = [];
+										var filenames = [];
 										var _iteratorNormalCompletion3 = true;
 										var _didIteratorError3 = false;
 										var _iteratorError3 = undefined;
@@ -12648,6 +12649,7 @@
 																var experiment_file = new _st_exp_protobuf_file.StExpProtobufFile(slice_loader, this.protobuf_loader);
 																gene_names_promises.push(experiment_file.genenames);
 																this.data_files[slice_loader.filename()] = experiment_file;
+																filenames.push(slice_loader.filename());
 													}
 										} catch (err) {
 													_didIteratorError3 = true;
@@ -12664,7 +12666,8 @@
 													}
 										}
 
-										_promise2.default.all(gene_names_promises).then(function (genenames_decoded_array) {
+										_promise2.default.all(gene_names_promises).then(function (filenames, genenames_decoded_array) {
+													var i = 0;
 													var _iteratorNormalCompletion4 = true;
 													var _didIteratorError4 = false;
 													var _iteratorError4 = undefined;
@@ -12696,6 +12699,11 @@
 																									}
 																						}
 																			}
+
+																			var gene_name_count = genenames_decoded.geneNames.length;
+																			var filename = filenames[i];
+																			$("#opened_data_files").append("<tr><td>" + filename + "</td><td>" + gene_name_count + "</td></tr>");
+																			i += 1;
 																}
 													} catch (err) {
 																_didIteratorError4 = true;
@@ -12713,7 +12721,7 @@
 													}
 
 													this.notify_change_listeners();
-										}.bind(this));
+										}.bind(this, filenames));
 							}
 				}], [{
 							key: "file_format_name",
